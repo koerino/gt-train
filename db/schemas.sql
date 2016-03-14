@@ -1,46 +1,46 @@
 CREATE TABLE ‘User’(
-            Username varchar(50) NOT NULL,
-            Password varchar(50) NOT NULL,
-            PRIMARY KEY (Username));
+    Username VARCHAR(50) NOT NULL,
+    Password VARCHAR(50) NOT NULL,
+    PRIMARY KEY (Username));
 
 CREATE TABLE ‘Manager’(
-            Username varchar(50) NOT NULL,
-            PRIMARY KEY(Username),
-            FOREIGN KEY(Username)
-                   REFERENCES ‘User’ (Username));
+    Username VARCHAR(50) NOT NULL,
+    PRIMARY KEY(Username),
+    FOREIGN KEY(Username)
+        REFERENCES ‘User’ (Username));
 
 CREATE TABLE ‘Customer’ (
-           Username varchar(50) NOT NULL,
-           Email varchar(50) NOT NULL,
-           IsStudent boolean NOT NULL,
-           PRIMARY KEY(Username),
-           FOREIGN KEY(Username)
-                   REFERENCES ‘User’ (Username));
+    Username VARCHAR(50) NOT NULL,
+    Email VARCHAR(50) NOT NULL,
+    IsStudent BOOLEAN NOT NULL,
+    PRIMARY KEY(Username),
+    FOREIGN KEY(Username)
+        REFERENCES ‘User’ (Username));
 
 CREATE TABLE ‘Review’(
-          ReviewNumber varchar(50) NOT NULL,
-          Comment varchar(50)  NULL,
-          Rating varchar(50) NOT NULL,
-          PRIMARY KEY (ReviewNumber));
+    ReviewNumber VARCHAR(50) NOT NULL,
+    Comment VARCHAR(50)  NULL,
+    Rating VARCHAR(50) NOT NULL,
+    PRIMARY KEY (ReviewNumber));
 
 CREATE TABLE ‘Reservation’(
-          ReservationID varchar(50) NOT NULL,
-          TotalCost DECIMAL(8,2) NOT NULL,
-          IsCancelled boolean NOT NULL,
-          PRIMARY KEY (ReservationID));
+    ReservationID VARCHAR(50) NOT NULL,
+    TotalCost DECIMAL(8,2) NOT NULL,
+    IsCancelled BOOLEAN NOT NULL,
+    PRIMARY KEY (ReservationID));
 
 CREATE TABLE ‘Give’(
-	Username varchar(50) NOT NULL,
-	ReviewNumber varchar(50) NOT NULL,
+	Username VARCHAR(50) NOT NULL,
+	ReviewNumber VARCHAR(50) NOT NULL,
 	PRIMARY KEY (Username, ReviewNumber),
 	FOREIGN KEY (Username)
-		REFERENCES ‘Customer’(Username),
+        REFERENCES ‘Customer’(Username),
 	FOREIGN KEY (ReviewNumber)
 		REFERENCES ‘Review’(ReviewNumber));
 
 CREATE TABLE ‘Makes’(
-	Username varchar(50) NOT NULL,
-	ReservationID varchar(50) NOT NULL,
+	Username VARCHAR(50) NOT NULL,
+	ReservationID VARCHAR(50) NOT NULL,
 	PRIMARY KEY (Username, ReservationID),
 	FOREIGN KEY (Username)
 		REFERENCES ‘Customer’(Username),
@@ -48,22 +48,22 @@ CREATE TABLE ‘Makes’(
 		REFERENCES ‘Reservation’(ReservationID));
 
 CREATE TABLE ‘TrainRoute’(
-	TrainNumber varchar(50) NOT NULL,
+	TrainNumber VARCHAR(50) NOT NULL,
 	1stClassPrice DECIMAL(6,2) NOT NULL,
 	2ndClassPrice DECIMAL(6,2) NOT NULL,
 	PRIMARY KEY (TrainNumber));
 
 CREATE TABLE ‘Station’(
-	Name varchar(50) NOT NULL,
-	Location varchar(50) NOT NULL,
+	Name VARCHAR(50) NOT NULL,
+	Location VARCHAR(50) NOT NULL,
 	PRIMARY KEY (Name));
 
 CREATE TABLE ‘PaymentInfo’(
-	CardNumber varchar(50) NOT NULL,
-	CVV varchar(50) NOT NULL,
-	ExpDate varchar(50) NOT NULL,
-	NameOnCard varchar(50) NOT NULL,
-PRIMARY KEY (CardNumber));
+	CardNumber VARCHAR(50) NOT NULL,
+	CVV VARCHAR(50) NOT NULL,
+	ExpDate VARCHAR(50) NOT NULL,
+	NameOnCard VARCHAR(50) NOT NULL,
+    PRIMARY KEY (CardNumber));
 
 CREATE TABLE ‘SystemInfo’(
 	MaxNumberBaggage INT NOT NULL,
@@ -73,17 +73,17 @@ CREATE TABLE ‘SystemInfo’(
 	PRIMARY KEY (MaxNumberBaggage));
 
 CREATE TABLE ‘Has’(
-	UserName varchar(50) NOT NULL,
-	CardNumber varchar (50) NOT NULL,
+	UserName VARCHAR(50) NOT NULL,
+	CardNumber VARCHAR (50) NOT NULL,
 	PRIMARY KEY (Username, CardNumber),
 	FOREIGN KEY (Username)
-		REFERENCES ‘User’(Username),
+        REFERENCES ‘User’(Username),
 	FOREIGN KEY (CardNumber)
 		REFERENCES ‘PaymentInfo’(CardNumber));
 
 CREATE TABLE ‘Uses’(
-	CardNumber varchar(50) NOT NULL,
-	ReservationID varchar(50) NOT NULL,
+	CardNumber VARCHAR(50) NOT NULL,
+	ReservationID VARCHAR(50) NOT NULL,
 	PRIMARY KEY (CardNumber, ReservationID),
 	FOREIGN KEY (CardNumber)
 		REFERENCES ‘PaymentInfo’ (CardNumber),
@@ -91,8 +91,8 @@ CREATE TABLE ‘Uses’(
 		REFERENCES ‘Reservation’ (ReservationID));
 
 CREATE TABLE ‘Stop’(
-	TrainNumber varchar(50) NOT NULL,
-	Name varchar(50) NOT NULL,
+	TrainNumber VARCHAR(50) NOT NULL,
+	Name VARCHAR(50) NOT NULL,
 	PRIMARY KEY (TrainNumber, Name),
 	FOREIGN KEY (TrainNumber)
 		REFERENCES ‘TrainRoute’ (TrainNumber),
@@ -100,8 +100,8 @@ CREATE TABLE ‘Stop’(
 		REFERENCES ‘Station’ (Name));
 
 CREATE TABLE ‘Reserves’(
-	TrainNumber varchar(50) NOT NULL,
-	ReservationID varchar(50) NOT NULL,
+	TrainNumber VARCHAR(50) NOT NULL,
+	ReservationID VARCHAR(50) NOT NULL,
 	PRIMARY KEY (TrainNumber, ReservationID),
 	FOREIGN KEY (TrainNumber)
 		REFERENCES ‘TrainRoute’ (TrainNumber),
@@ -109,10 +109,10 @@ CREATE TABLE ‘Reserves’(
 		REFERENCES ‘Reservation’ (ReservationID));
 
 CREATE TABLE ‘About’ (
-          ReviewNumber varchar(50) NOT NULL,
-          TrainNumber varchar(50) NOT NULL,
-          PRIMARY KEY (ReviewNumber),
-          FOREIGN KEY (ReviewNumber)
-                  REFERENCES ‘Review’ (ReviewNumber),
-          FOREIGN KEY (TrainNumber)
-                  REFERENCES ‘TrainRoute’ (TrainNumber));
+    ReviewNumber VARCHAR(50) NOT NULL,
+    TrainNumber VARCHAR(50) NOT NULL,
+    PRIMARY KEY (ReviewNumber),
+    FOREIGN KEY (ReviewNumber)
+        REFERENCES ‘Review’ (ReviewNumber),
+    FOREIGN KEY (TrainNumber)
+        REFERENCES ‘TrainRoute’ (TrainNumber));
