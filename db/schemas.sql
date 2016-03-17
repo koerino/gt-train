@@ -25,7 +25,6 @@ CREATE TABLE ‘Review’ (
 
 CREATE TABLE ‘Reservation’ (
     ReservationID VARCHAR(50) NOT NULL,
-    TotalCost DECIMAL(8,2) NOT NULL,
     IsCancelled BOOLEAN NOT NULL,
     PRIMARY KEY (ReservationID));
 
