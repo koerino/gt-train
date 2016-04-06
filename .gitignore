@@ -1,4 +1,8 @@
 venv
+config.py
+
+node_modules
+bundle.js
+
 *.map
 .sass-cache
-config.py
