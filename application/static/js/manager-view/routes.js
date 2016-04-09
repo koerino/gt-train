@@ -1,6 +1,14 @@
 import React from 'react';
+import { Route } from 'react-router';
 
-//placeholder
-export default () => {
-    return <div>Manager View</div>;
-}
+import Menu from './components/menu';
+import ViewPopRoute from './components/view-popular-route';
+import ViewRevenue from './components/view-revenue';
+
+export default (
+    <Route>
+        <Route path="admin" component={Menu} />
+        <Route path="admin/popular-routes" component={ViewPopRoute} />
+        <Route path="admin/revenue" component={ViewRevenue} />
+    </Route>
+);

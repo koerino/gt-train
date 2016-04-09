@@ -1,5 +1,6 @@
 venv
 config.py
+*.pyc
 
 node_modules
 bundle.js
