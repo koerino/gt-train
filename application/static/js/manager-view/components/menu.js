@@ -1,6 +1,13 @@
 import React from 'react';
+import ButtonLink from '../../shared/button-link';
 
-//placeholder
 export default () => {
-    return <div>Admin Menu</div>;
+    return (
+        <div>
+            <h1>Hello, (User)</h1>
+            <a>View Revenue Report</a>
+            <a>View Popular Route Report</a>
+            <ButtonLink label='Log Out' />
+        </div>
+    );
 }

@@ -1,6 +1,13 @@
 import React from 'react';
+import ButtonLink from '../../../shared/button-link';
+import InputBox from '../../../shared/input-box';
 
-//placeholder
 export default () => {
-    return <div>Search Sche</div>;
+    return (
+        <div>
+            <h1>View Train Schedule</h1>
+            <InputBox label='Train Number' />
+            <ButtonLink label='Search' />
+        </div>
+    );
 }

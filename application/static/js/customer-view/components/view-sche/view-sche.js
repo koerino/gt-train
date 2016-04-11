@@ -1,6 +1,11 @@
-import React from 'react';
+/*import React from 'react';
+import ButtonLink from '../../../shared/button-link';
 
-//placeholder
 export default () => {
-    return <div>Sches</div>;
-}
+    return (
+        <div>
+            <h1>View Train Schedule</h1>
+            <ButtonLink label='Back' />
+        </div>
+    );
+}*/
