@@ -7,13 +7,13 @@ module.exports = {
     path: __dirname + '/application/static/js'
   },
   module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel-loader'
-    }]
+      loaders: [
+          {test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel', query: {presets: ['es2015']}},
+          {test: /\.css$/, loader: 'style-loader!css-loader'}
+      ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.css']
   },
   devServer: {
     historyApiFallback: true,

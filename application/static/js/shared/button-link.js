@@ -1,13 +1,10 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class ButtonLink extends Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         return (
             <div>
-                <a>{ this.props.label }</a>
+                <a>{this.props.label}</a>
             </div>
         );
     }

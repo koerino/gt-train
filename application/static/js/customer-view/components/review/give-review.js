@@ -1,6 +1,16 @@
 import React from 'react';
+import ButtonLink from '../../../shared/button-link';
+import InputBox from '../../../shared/input-box';
+import Dropdown from '../../../shared/dropdown';
 
-//placeholder
 export default () => {
-    return <div>Write Review</div>;
+    return (
+        <div>
+            <h1>Give Review</h1>
+            <InputBox label='Train Number' />
+            <Dropdown label='Rating' />
+            <InputBox label='Comment' />
+            <ButtonLink label='Submit' />
+        </div>
+    );
 }

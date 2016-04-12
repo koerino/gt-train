@@ -1,11 +1,6 @@
-/*import React from 'react';
-import ButtonLink from '../../../shared/button-link';
+import React from 'react';
 
+//placeholder
 export default () => {
-    return (
-        <div>
-            <h1>View Train Schedule</h1>
-            <ButtonLink label='Back' />
-        </div>
-    );
-}*/
+    return <div>View Schedule</div>;
+}
