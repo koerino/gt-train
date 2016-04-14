@@ -9,7 +9,8 @@ module.exports = {
   module: {
       loaders: [
           {test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel', query: {presets: ['es2015']}},
-          {test: /\.css$/, loader: 'style-loader!css-loader'}
+          {test: /\.css$/, loader: 'style-loader!css-loader'},
+          {test: /\.png$/, loader: "url-loader"}
       ]
   },
   resolve: {
