@@ -1,0 +1,117 @@
+#registration,
+#search-sche-b,
+#travel-extras {
+    .content {
+        margin-top: 3em;
+        .buttons {
+            margin-top: 1.5em;
+        }
+    }
+}
+.menu {
+    .content {
+        margin-top: 2em;
+        a {
+            @include font;
+            @include link($soft-cyan);
+            text-decoration: none;
+            margin-top: 1.5em;
+        }
+        #btn {
+            margin-top: 2em;
+            a {
+                color: $pure-white;
+            }
+        }
+    }
+}
+#school-info {
+    .content {
+        margin-top: 6em;
+        span {
+            @include font;
+            width: 15em;
+            margin: 0.5em 0 2em;
+        }
+        > span {
+            width: 25em;
+        }
+    }
+}
+#payment-info {
+    > div {
+        @include center;
+        margin-top: 3em;
+        h3 {
+            @include font(20px);
+            text-align: center;
+            color: $soft-cyan;
+            margin-bottom: 1.5em;
+        }
+    }
+    #payment-add,
+    #payment-delete {
+        height: 20em;
+    }
+    #payment-add > .buttonlink {
+        margin-left: 20em;
+    }
+    #payment-delete {
+        span,
+        .dropdown {
+            @include font(15px);
+        }
+        .dropdown {
+            width: 20em;
+        }
+    }
+    #vertical-line {
+        height: 15em;
+        margin: 0 2.5em;
+        border-left: 1px solid $platinum;
+    }
+}
+#confirmation {
+    .content {
+        @include font;
+        margin-top: 3em;
+        div,
+        span {
+            margin: 2em;
+        }
+    }
+}
+#login,
+#search-sche-a,
+#update-resv,
+#cancel-resv,
+#search-review {
+    .content {
+        margin-top: 6em;
+        .buttons {
+            margin-top: 3em;
+        }
+    }
+}
+#travel-extras {
+    @include font;
+    span,
+    i {
+        margin: 1em;
+    }
+}
+#write-review {
+    .content {
+        margin-top: 2em;
+    }
+    input, .buttons {
+        margin-top: 0.75em;
+    }
+}
+#notfound {
+    @include center;
+    img {
+        width: 32em;
+        height: 32em;
+    }
+}

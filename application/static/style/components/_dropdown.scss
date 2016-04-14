@@ -1,0 +1,15 @@
+.dropdown {
+    @include font;
+    width: 50%;
+    margin: 0.75em;
+    > span {
+        display: inline-block;
+        margin-bottom: 0.5em;
+    }
+}
+.dropdown.short {
+    width: 30%;
+}
+.dropdown.long {
+    width: 80%;
+}

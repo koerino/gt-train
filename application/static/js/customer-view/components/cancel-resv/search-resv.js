@@ -1,14 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router';
 import ButtonLink from '../../../shared/button-link';
 import InputBox from '../../../shared/input-box';
 
 export default () => {
     return (
-        <div>
+        <div className='page-container' id='cancel-resv'>
             <h1>Cancel Reservation</h1>
-            <InputBox label='Reservation ID' />
-            <ButtonLink label='Search' />
-            <ButtonLink label='Back' />
+            <div className='content'>
+                <InputBox label='Reservation ID' />
+                <div className='buttons'>
+                    <Link to='menu'><ButtonLink label='Back' colour='gold' /></Link>
+                    <Link to='cancel'><ButtonLink label='Search' colour='blue' /></Link>{/* to-be-dynamic */}
+                </div>
+            </div>
         </div>
     );
 }

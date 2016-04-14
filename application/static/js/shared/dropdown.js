@@ -1,22 +1,28 @@
 import React, { Component } from 'react';
+import Select from 'react-select';
+import 'react-select/dist/react-select.min.css';
+import classNames from 'classnames';
 
 class Dropdown extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            options: ['test1', 'test2', 'test3']
+            options: [
+                {value: 'one', label: 'test option one'},
+                {value: 'two', label: 'test option two'},
+                {value: 'three', label: 'test option three'}
+            ]
         };
     }
     render() {
-        var dropdown = [];
-        for (var i = 0; i < this.state.options.length; i++) {
-            let option = this.state.options[i];
-            dropdown.push(<option key={option} value={option}>{option}</option>);
-        }
-        dropdown.sort();
+        var classes = classNames({
+            'dropdown': true,
+            'short': this.props.short
+        });
         return (
-            <div>
-                <span>{this.props.label}</span><select>{dropdown}</select>
+            <div className={classes}>
+                <span>{this.props.label}</span>
+                <Select value='' options={this.state.options} />
             </div>
         );
     }

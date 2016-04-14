@@ -10,7 +10,9 @@ class QuantityInput extends Component {
          this.decrement = this.decrement.bind(this);
     }
     increment() {
-        this.setState({quantity: this.state.quantity + 1});
+        if (this.state.quantity < 4) {
+            this.setState({quantity: this.state.quantity + 1});
+        }
     }
     decrement() {
         if (this.state.quantity > 0) {
@@ -20,12 +22,12 @@ class QuantityInput extends Component {
     render() {
         return (
             <div>
-                <span>{this.props.label}</span>
-                <span>{this.state.quantity}</span>
-                <div>
-                    <i className="fa fa-plus-square-o" onClick={this.increment}></i>
+                <span>
+                    {this.props.label}                     
                     <i className="fa fa-minus-square-o" onClick={this.decrement}></i>
-                </div>
+                    {this.state.quantity}
+                    <i className="fa fa-plus-square-o" onClick={this.increment}></i>     
+                </span>
             </div>
         );
     }

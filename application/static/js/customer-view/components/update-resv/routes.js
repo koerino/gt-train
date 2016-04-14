@@ -7,8 +7,8 @@ import UpdateResv from './update-resv';
 
 export default (
     <Route>
-        <Route path="update-resv" component={SearchResv} />
-        <Route path="update-resv/select" component={SelectResv} /> {/* to-be-dynamic */}
-        <Route path="update-resv/update" component={UpdateResv} /> {/* to-be-dynamic */}
+        <Route path="update-search" component={SearchResv} />
+        <Route path="update-select" component={SelectResv} /> {/* to-be-dynamic */}
+        <Route path="update" component={UpdateResv} /> {/* to-be-dynamic */}
     </Route>
 );

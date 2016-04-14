@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class ButtonLink extends Component {
     render() {
         return (
-            <div>
-                <a>{this.props.label}</a>
+            <div className='buttonlink'>
+                <span className={this.props.colour}>{this.props.label}</span>
             </div>
         );
     }

@@ -6,7 +6,7 @@ import CancelResv from './cancel-resv';
 
 export default (
     <Route>
-        <Route path="cancel-resv" component={SearchResv} />
-        <Route path="cancel-resv/cancel" component={CancelResv} /> {/* to-be-dynamic */}
+        <Route path="cancel-search" component={SearchResv} />
+        <Route path="cancel" component={CancelResv} />{/* to-be-dynamic */}
     </Route>
 );

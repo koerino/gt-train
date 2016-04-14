@@ -1,0 +1,14 @@
+.datepicker {
+    @include center;
+    @include font;
+    margin: 1em;
+    > span {
+        margin-right: 3em;
+    }
+    input {
+        @include font(13px);
+        outline: none;
+        width: 16em;
+        padding: 0.25em 0.5em;
+    }
+}

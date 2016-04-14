@@ -1,0 +1,13 @@
+.buttonlink {
+    display: inline-block;
+    margin: 2em;
+    span.blue {
+        @include buttonlink($teal-blue);
+    }
+    span.gold {
+        @include buttonlink($soft-orange);
+    }
+    span.cyan {
+        @include buttonlink($soft-cyan);
+    }
+}

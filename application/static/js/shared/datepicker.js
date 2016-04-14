@@ -16,7 +16,7 @@ class Date extends Component {
     }
     render() {
         return (
-            <div>
+            <div className='datepicker'>
                 <span>{this.props.label}</span>
                 <DatePicker selected={this.state.startDate} onChange={this.handleChange} />
             </div>

@@ -1,13 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router';
 import ButtonLink from '../../shared/button-link';
 
 export default () => {
     return (
-        <div>
+        <div className='page-container menu'>
             <h1>Hello, (User)</h1>
-            <a>View Revenue Report</a>
-            <a>View Popular Route Report</a>
-            <ButtonLink label='Log Out' />
+            <div className='content'>
+                <Link to='revenue'><span>View Revenue Report</span></Link>
+                <Link to='popular-routes'><span>View Popular Route Report</span></Link>
+                <div id='btn'>
+                    <Link to='/'><ButtonLink label='Log Out' colour='blue' /></Link>
+                </div>
+            </div>
         </div>
     );
 }

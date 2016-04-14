@@ -1,0 +1,30 @@
+body {
+    @include center(column);
+}
+#main-header {
+    @include font(36px);
+    color: $teal-blue;
+    margin-bottom: 0.75em;
+}
+#root {
+    width: 60em;
+    height: 32em;
+    border: 1px solid $pure-grey;
+    .mega-container,
+    .page-container {
+        width: inherit;
+        height: inherit;
+        overflow: hidden;
+    }
+    .page-container {
+        h1 {
+            @include font(30px);
+            color: $caramel;
+            margin-top: 1.5em;
+            text-align: center;
+        }
+        .content {
+            @include center(column);
+        }
+    }
+}

@@ -1,6 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router';
+import ButtonLink from './button-link';
 
-//placeholder
 export default () => {
-    return <div>404</div>;
+    return (
+        <div id='notfound'>
+            <img src={require('../../assets/404.png')}></img>
+            <Link to='menu'><ButtonLink label='Back' colour='gold' /></Link>
+        </div>
+    );
 }

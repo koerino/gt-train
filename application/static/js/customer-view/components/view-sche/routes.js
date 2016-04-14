@@ -6,7 +6,7 @@ import ViewSche from './view-sche';
 
 export default (
     <Route>
-        <Route path="schedule" component={SearchSche} />
-        <Route path="schedule/view" component={ViewSche} /> {/* to-be-dynamic */}
+        <Route path="schedule-search" component={SearchSche} />
+        <Route path="schedules" component={ViewSche} /> {/* to-be-dynamic */}
     </Route>
 );

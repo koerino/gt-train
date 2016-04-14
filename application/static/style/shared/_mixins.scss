@@ -1,0 +1,50 @@
+@import url(https://fonts.googleapis.com/css?family=Muli);
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+
+//Default font-size is 18px, font-family is Muli, sans-serif
+@mixin font($size: 18px, $family: 'Muli') {
+    font-size: $size;
+    font-family: $family;
+    letter-spacing: 0.12em;
+}
+
+//center multiple elements
+@mixin center($direction: row) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+//CSS3 transition
+@mixin transition($options...) {
+    -webkit-transition: $options;
+    -moz-transition: $options;
+    -o-transition: $options;
+    transition: $options;
+}
+
+//button-like links
+@mixin buttonlink($colour, $font-size: 16px) {
+    @include font($font-size, 'Raleway');
+    text-decoration: none;
+    color: $pure-white;
+    background-color: $colour;
+    padding: 0.75em 2em;
+    &:hover {
+        background-color: darken($colour, 5%);
+        cursor: pointer;
+    }
+}
+
+//hover effect for links
+@mixin link($colour) {
+    color: $colour;
+    &:hover {
+        text-decoration: none;
+        cursor: pointer;
+        color: darken($colour, 10%);
+    }
+}

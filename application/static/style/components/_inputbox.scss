@@ -1,0 +1,36 @@
+.inputbox {
+    margin: 1em 0;
+    color: $dark-grey;
+    span,
+    input {
+        @include font;
+    }
+    span {
+        display: inline-block;
+        width: 13em;
+    }
+    input {
+        width: 20em;
+        padding: 0.25em;
+        outline: 0;
+    }
+}
+.inputbox.small {
+    span,
+    input {
+        @include font(13px);
+        margin-bottom: 1em;
+        padding: 0.35em;
+    }
+}
+.inputbox.short > input {
+    width: 6.5em;
+}
+.inputbox.long {
+    span {
+        width: 8em;
+    }
+    input {
+        width: 28em;
+    }
+}
