@@ -93,6 +93,12 @@
         }
     }
 }
+#login {
+    .content > span {
+        @include font;
+        margin-top: 1em;
+    }
+}
 #travel-extras {
     @include font;
     span,
@@ -102,9 +108,9 @@
 }
 #write-review {
     .content {
-        margin-top: 2em;
+        margin-top: 3em;
     }
-    input, .buttons {
+    .buttons {
         margin-top: 0.75em;
     }
 }

@@ -5,7 +5,7 @@ import ButtonLink from '../../shared/button-link';
 export default () => {
     return (
         <div className='page-container menu'>
-            <h1>Hello, (User)</h1>
+            <h1>Welcome!</h1>
             <div className='content'>
                 <Link to='revenue'><span>View Revenue Report</span></Link>
                 <Link to='popular-routes'><span>View Popular Route Report</span></Link>

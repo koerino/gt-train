@@ -9,10 +9,9 @@ class Row extends Component {
     }
     render() {
         var entries = [];
-        for (var i = 0; i < this.state.entries.length; i++) {
-            var entry = this.state.entries[i];
+        this.state.entries.map(function(entry) {
             entries.push(<span key={entry}>{entry}</span>);
-        }
+        }); 
         return (
             <div className='row'>
                 {entries}

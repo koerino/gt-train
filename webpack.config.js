@@ -1,10 +1,10 @@
 module.exports = {
   entry: [
-    './application/static/js/index.js'
+    './static/js/index.js'
   ],
   output: {
     filename: 'bundle.js',
-    path: __dirname + '/application/static/js'
+    path: __dirname + '/static/js'
   },
   module: {
       loaders: [

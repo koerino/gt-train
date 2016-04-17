@@ -20,12 +20,13 @@
   },
   "homepage": "https://github.com/koerino/gt-train#readme",
   "dependencies": {
-    "classnames": "file:node_modules/classnames",
+    "classnames": "^2.2.3",
     "react": "^0.14.8",
     "react-datepicker": "^0.25.0",
     "react-dom": "^0.14.8",
     "react-router": "^2.0.1",
-    "react-select": "^0.9.1"
+    "react-select": "^0.9.1",
+    "whatwg-fetch": "^0.11.0"
   },
   "devDependencies": {
     "babel-core": "^6.7.4",

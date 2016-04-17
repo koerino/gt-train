@@ -1,5 +1,5 @@
 venv
-config.cfg
+config.py
 *.pyc
 
 node_modules
