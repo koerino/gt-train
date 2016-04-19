@@ -10,7 +10,7 @@ export default () => {
             <div className='content'>
                 <Row />
                 <div className='buttons'>
-                    <Link to='schedule-search'><ButtonLink label='Back to Search' colour='gold' /></Link>
+                    <Link to='search-schedules'><ButtonLink label='Back to Search' colour='gold' /></Link>
                     <Link to='menu'><ButtonLink label='Main Menu' colour='blue' /></Link>
                 </div>
             </div>

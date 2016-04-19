@@ -13,9 +13,9 @@ export default () => {
                 <Dropdown label='Rating' short='true' />
                 <InputBox label='Comment' long='true' />
                 <div className='buttons'>
-                    <Link to='review-search'><ButtonLink label='View Reviews' colour='gold' /></Link>
+                    <Link to='search-reviews'><ButtonLink label='View Reviews' colour='gold' /></Link>
                     <Link to='menu'><ButtonLink label='Back' colour='cyan' /></Link>
-                    <Link to='menu'><ButtonLink label='Submit' colour='blue' /></Link>
+                    <ButtonLink label='Submit' colour='blue' />
                 </div>
             </div>
         </div>

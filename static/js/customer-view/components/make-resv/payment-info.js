@@ -15,14 +15,14 @@ export default () => {
                     <InputBox label='Card Number' small='true' />
                     <InputBox label='CVV' small='true' short='true' />
                     <InputBox label='Exp Date(MM/YY)' small='true' short='true' />
-                    <Link to='reserve'><ButtonLink label='Add' colour='gold' /></Link>{/* to-be-dynamic */}
+                    <ButtonLink label='Add' colour='gold' />
                 </div>
                 <div id='vertical-line'></div>
                 <div id='payment-delete'>
                     <h3>Delete Card</h3>
                     <Dropdown label='Card Number' />
-                    <Link to='reserve'><ButtonLink label='Delete' colour='blue' /></Link>{/* to-be-dynamic */}
-                    <Link to='reserve'><ButtonLink label='Back' colour='cyan' /></Link>{/* to-be-dynamic */}
+                    <ButtonLink label='Delete' colour='blue' />
+                    <Link to='reserve'><ButtonLink label='Back' colour='cyan' /></Link>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@ export default () => {
         <div className='page-container menu'>
             <h1>Welcome!</h1>
             <div className='content'>
-                <Link to='schedule-search'><span>View Train Schedules</span></Link>
+                <Link to='search-schedules'><span>View Train Schedules</span></Link>
                 <Link to='reserve-search'><span>Make a Reservation</span></Link>
                 <Link to='update-search'><span>Change Reservation</span></Link>
                 <Link to='cancel-search'><span>Cancel Reservation</span></Link>

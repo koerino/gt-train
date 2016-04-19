@@ -12,7 +12,7 @@ export default () => {
                 <div className='buttons'>
                     <Link to='reserve-search'><ButtonLink label='Back' colour='gold' /></Link>
                     <Link to='menu'><ButtonLink label='Main Menu' colour='cyan' /></Link>
-                    <Link to='reserve-extras'><ButtonLink label='Next' colour='blue' /></Link>
+                    <ButtonLink label='Next' colour='blue' />
                 </div>
             </div>
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import ButtonLink from '../../../shared/button-link';
 import InputBox from '../../../shared/input-box';
-import QuantityInput from '../../../shared/quantity-input';
+import QuantityInput from './quantity-input';
 
 export default () => {
     return (
@@ -13,9 +13,9 @@ export default () => {
                 <span>Every passenger can bring up to 4 baggage. <br /><br />2 free of charge, 2 for $30 per bag.</span> 
                 <InputBox label='Passenger Name' />
                 <div className='buttons'>
-                    <Link to='reserve-select'><ButtonLink label='Back' colour='gold' /></Link>{/* to-be-dynamic */}
+                    <Link to='reserve-select'><ButtonLink label='Back' colour='gold' /></Link>
                     <Link to='menu'><ButtonLink label='Main Menu' colour='cyan' /></Link>
-                    <Link to='reserve'><ButtonLink label='Next' colour='blue' /></Link>{/* to-be-dynamic */}
+                    <ButtonLink label='Next' colour='blue' />
                 </div>
             </div>
         </div>

@@ -1,11 +1,18 @@
-#registration,
 #search-sche-b,
 #travel-extras {
     .content {
         margin-top: 3em;
-        .buttons {
-            margin-top: 1.5em;
-        }
+    }
+    .buttons{
+        margin-top: 1.5em;
+    }
+}
+#registration {
+    .content {
+        margin-top: 2em;
+    }
+    .buttons {
+        margin-top: 1em;
     }
 }
 .menu {
@@ -93,11 +100,9 @@
         }
     }
 }
-#login {
-    .content > span {
-        @include font;
-        margin-top: 1em;
-    }
+.msg {
+    @include font;
+    margin-top: 1em;
 }
 #travel-extras {
     @include font;
@@ -108,10 +113,10 @@
 }
 #write-review {
     .content {
-        margin-top: 3em;
+        margin-top: 3.75em;
     }
     .buttons {
-        margin-top: 0.75em;
+        margin-top: 1.5em;
     }
 }
 #notfound {
@@ -120,4 +125,29 @@
         width: 32em;
         height: 32em;
     }
+}
+#review-table {
+    @include font(22px);
+    text-align: center;
+    h1 {
+        margin-bottom: 3.5em;
+    }
+    div {
+        margin: 1.5em 0;
+    }
+    span {
+        display: inline-block;
+    }
+    .ratings {
+        width: 12em; 
+    }
+    .comments {
+        width: 20em;
+    }
+}
+.col-names {
+    color: $soft-cyan;
+}
+.buttons-b {
+    margin-top: 2em;
 }

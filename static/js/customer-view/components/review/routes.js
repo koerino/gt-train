@@ -8,7 +8,7 @@ import ViewReview from './view-review';
 export default (
     <Route>
         <Route path="write-review" component={WriteReview} />
-        <Route path="review-search" component={SearchTrain} />
-        <Route path="reviews" component={ViewReview} /> {/* to-be-dynamic */}
+        <Route path="search-reviews" component={SearchTrain} />
+        <Route path="reviews" component={ViewReview} /> 
     </Route>
 );

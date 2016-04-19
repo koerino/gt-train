@@ -10,7 +10,8 @@ class Login extends Component {
         this.state = {
             username: "",
             pwd: "",
-            msg: ""
+            msg: "",
+            type: ""
         };
         this.handleChange = this.handleChange.bind(this);
         this.sendLoginReq = this.sendLoginReq.bind(this);
@@ -31,24 +32,28 @@ class Login extends Component {
         }).then(res => res.json())
             .then(data => {
                 if (data.msg) this.setState({msg: data.msg});
-                else this.context.router.push('menu');  
+                else if (data.type === "customer") {
+                    this.context.router.push('menu');  
+                } else {
+                    this.context.router.push('admin');
+                }     
             })
             .catch(err => console.log(err));
     }
     render() {
         return (
-        <div className='page-container' id='login'>
-            <h1>Login</h1>
-            <div className='content'>
-                <InputBox label='Username' field='username' funct={this.handleChange} />
-                <InputBox label='Password' field='pwd' type='password' funct={this.handleChange} />
-                <span>{this.state.msg}</span>
-                <div className='buttons'>
-                    <ButtonLink label='Login' colour='gold' funct={this.sendLoginReq} />
-                    <Link to='registration'><ButtonLink label='Register' colour='blue' /></Link>
+            <div className='page-container' id='login'>
+                <h1>Login</h1>
+                <div className='content'>
+                    <InputBox label='Username' field='username' funct={this.handleChange} />
+                    <InputBox label='Password' field='pwd' type='password' funct={this.handleChange} />
+                    <span className='msg'>{this.state.msg}</span>
+                    <div className='buttons'>
+                        <ButtonLink label='Login' colour='gold' funct={this.sendLoginReq} />
+                        <Link to='registration'><ButtonLink label='Register' colour='blue' /></Link>
+                    </div>
                 </div>
             </div>
-        </div>
         );
     }
 }
