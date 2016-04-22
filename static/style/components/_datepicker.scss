@@ -12,3 +12,10 @@
         padding: 0.25em 0.5em;
     }
 }
+.datepicker.small {
+    @include font(12px);
+    input {
+        @include font(12px);
+        width:12em;
+    }
+}

@@ -1,17 +1,11 @@
 #search-sche-b,
-#travel-extras {
-    .content {
-        margin-top: 3em;
-    }
-    .buttons{
-        margin-top: 1.5em;
-    }
-}
+#travel-extras,
+#cancel-resv,
 #registration {
     .content {
         margin-top: 2em;
     }
-    .buttons {
+    .buttons{
         margin-top: 1em;
     }
 }
@@ -90,8 +84,8 @@
 }
 #login,
 #search-sche-a,
-#update-resv,
-#cancel-resv,
+#search-resv-a,
+#search-resv-b,
 #search-review {
     .content {
         margin-top: 6em;
@@ -104,11 +98,18 @@
     @include font;
     margin-top: 1em;
 }
+.msg-sm {
+    @include font(12px);
+    margin-top: 0.5em;
+}
 #travel-extras {
     @include font;
     span,
     i {
         margin: 1em;
+    }
+    .buttons {
+        margin-top: 0;
     }
 }
 #write-review {
@@ -150,4 +151,135 @@
 }
 .buttons-b {
     margin-top: 2em;
+}
+#sches-table {
+    @include font(20px);
+    text-align: center;
+    h1 {
+        margin-bottom: 3em;
+    }
+    div {
+        margin: 1em 0;
+    }
+    span {
+        display: inline-block;
+    }
+    .sche-cols {
+        width: 12.5em;
+    }
+}
+#dep-table {
+    @include font(20px);
+    margin-top: 3em;
+    text-align: center;
+    vertical-align: middle;
+    div {
+        margin: 1em 0;
+    }
+    span {
+        display: inline-block;
+    }
+    input {
+        margin-right: 1em;
+    }
+    span.dep-col-lg {
+        width: 12em;
+        height: 2em;
+    }
+    .dep-col {
+        width: 10em;
+    }
+}
+.cancel-info {
+    @include font;
+    > span {
+        display: block;
+        margin: 1em 0;
+    }
+}
+#resvs-table {
+    background-color: aquamarine;
+    @include font(12px);
+    text-align: center;
+    div {
+        margin-bottom: 2.5em;
+    }
+    span {
+        display: inline-block;
+    }
+    .resv-col-short {
+        width: 5em;
+    }
+    .resv-col {
+        width: 10em;
+    }
+    .resv-col-long {
+        width: 17.5em;
+    }
+    .resv-col-hidden {
+        display: none;
+    }
+    .resv-row {
+        @include center;
+    }
+}
+#select-resv, #update-resv {
+    @include font(12px);
+    text-align: center;
+    .content > div {
+        margin-top: 1.5em;
+        > span {
+            margin: 0 2em;
+        }
+    }
+    .flex {
+        @include center;
+    }
+    a {
+        @include link($soft-orange);
+        text-decoration: none;
+        margin-left: 2em;
+    }
+    h5 {
+        @include font(13px);
+        margin-bottom: 1em;
+    }
+}
+#make-resv {
+    @include font(16px);
+    > div {
+        margin-top: 2em;
+        .link, a {
+            @include link($soft-cyan);
+            text-decoration: none;
+        }
+        > span {
+            margin-left: 3em;
+        }
+    }
+    .dropdown {
+        margin-left: 1.5em;
+        > div {
+            width: 80%;
+        }
+    }
+    .buttons {
+        @include center;
+        margin-top: 1.5em;
+    }
+    .msg {
+        margin-left: 16em;
+    }
+}
+#popular-routes, #revenue {
+    @include font;
+    .content {
+        margin: 3em 0;
+        div {
+            margin-bottom: 2em;    
+        }
+        span {
+            margin: 1em;
+        }
+    }
 }

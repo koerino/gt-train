@@ -4,16 +4,13 @@ import ButtonLink from '../../../shared/button-link';
 import Reviews from './reviews';
 import 'whatwg-fetch';
 
-class SearchReview extends Component {
+class ViewReview extends Component {
     constructor(props) {
         super(props);
         this.state = {
             data: []
         };
         this.sendGetReq = this.sendGetReq.bind(this);
-    }
-    handleChange(field, value) {
-        this.setState({[field]: value});
     }
     sendGetReq() {
         fetch('/api/get-reviews', {
@@ -22,8 +19,8 @@ class SearchReview extends Component {
             .then(data => this.setState({data: data}))
             .catch(err => console.log(err));
     }
-    componentDidMount() {
-        return this.sendGetReq();
+    componentWillMount() {
+        this.sendGetReq();
     }
     render() {
         return (
@@ -41,4 +38,4 @@ class SearchReview extends Component {
     }
 }
 
-export default SearchReview;
+export default ViewReview;

@@ -17,17 +17,20 @@ class SearchSche extends Component {
         this.setState({[field]: value});
     }
     sendSearchReq() {
-        var url = `/api/schedules/${this.state.trainNo}`;
-        fetch(url, {
-            method: 'GET'
-        }).then(res => res.json())
-            .then(data => {
-                if (data.msg) this.setState({msg: data.msg})
-                else {
-                    this.context.router.push('schedules')
-                }     
-            })
-            .catch(err => console.log(err));
+        if (!this.state.trainNo) this.setState({msg: "Please enter a train number."})
+        else {
+            var url = `/api/schedules/${this.state.trainNo}`;
+            fetch(url, {
+                method: 'GET'
+            }).then(res => res.json())
+                .then(data => {
+                    if (data.msg) this.setState({msg: data.msg})
+                    else {
+                        this.context.router.push('schedules')
+                    }     
+                })
+                .catch(err => console.log(err));
+        }
     }
     render() {
         return (

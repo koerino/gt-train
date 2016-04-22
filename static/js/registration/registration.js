@@ -21,20 +21,23 @@ class Registration extends Component {
         this.setState({[field]: value});
     }
     sendRegReq() {
-        fetch('/api/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                username: this.state.username,
-                pwd: this.state.pwd,
-                cpwd: this.state.cpwd,
-                email: this.state.email
-            })
-        }).then(res => res.json())
-            .then(data => this.setState({msg: data.msg}))
-            .catch(err => console.log(err));
+        if (this.state.email.indexOf(' ') != -1 || this.state.email.indexOf('@') < 0 || this.state.email.indexOf('@')+1 >= this.state.email.length) this.setState({msg: "Please enter a valid email."});
+        else {
+            fetch('/api/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username: this.state.username,
+                    pwd: this.state.pwd,
+                    cpwd: this.state.cpwd,
+                    email: this.state.email
+                })
+            }).then(res => res.json())
+                .then(data => this.setState({msg: data.msg}))
+                .catch(err => console.log(err));
+        }
     }
     render() {
         return (

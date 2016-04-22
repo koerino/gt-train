@@ -21,3 +21,11 @@ class Reviews:
         return self.reviews
     def setReviews(self, reviews):
         self.reviews = reviews
+        
+class Departures:
+    def __init__(self, deps):
+        self.deps = deps
+    def getDeps(self):
+        return self.deps
+    def setDeps(self, deps):
+        self.deps = deps

@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import Select from 'react-select';
 import 'react-select/dist/react-select.min.css';
 import classNames from 'classnames';
-import 'whatwg-fetch';
 
 class Dropdown extends Component {
     constructor(props) {
         super(props);
+        this.onChange = this.onChange.bind(this);
+    }
+    onChange(val) {
+        this.setState({value: val});
+        this.props.funct(this.props.field, val);
     }
     render() {
         var classes = classNames({
@@ -16,20 +20,10 @@ class Dropdown extends Component {
         return (
             <div className={classes}>
                 <span>{this.props.label}</span>
-                <Select loadOptions={getStations} />
+                <Select value={this.props.value} options={this.props.options} onChange={this.onChange} />
             </div>
         );
     }
-}
-
-const getStations = (input) => {
-    return fetch('/api/stations', {
-        method: 'GET'
-    }).then(res => res.json())
-        .then(data => {
-            return {options: data};    
-        })
-        .catch(err => console.log(err));    
 }
 
 export default Dropdown;
