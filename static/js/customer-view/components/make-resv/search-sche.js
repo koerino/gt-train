@@ -33,7 +33,7 @@ class SearchSche extends Component {
         if (this.state.dep === this.state.arr) this.setState({msg: "Please select different stations."});
         if (this.state.date.isBefore(moment())) this.setState({msg: "Please select a future date."});
         else {
-            var url = `/api/departures/${this.state.dep}/${this.state.arr}/${this.state.date}`;
+            var url = `/api/departures/${this.state.dep}/${this.state.arr}/${this.state.date.format('ddd, DD MMM YYYY')}`;
             fetch(url, {
                 method: 'GET',
             }).then(res => res.json())

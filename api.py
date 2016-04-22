@@ -49,6 +49,8 @@ def login():
         userN = str(resB[0]["Username"])
         user.setUserName(userN)
         resB[0]["type"] = "customer"
+        global temp_resv
+        temp_resv = [{}]
         return jsonify(resB[0])
     
 def register():
@@ -176,7 +178,8 @@ def submit_review():
         return jsonify(msg="Review submitted successfully!")
     
 #make reservation    
-    
+
+#get the dropdown menu for stations
 def get_stations():
     sql="SELECT * FROM Station"
     cursor = db.cursor(pymysql.cursors.DictCursor)
@@ -190,6 +193,7 @@ def get_stations():
     
     return Response(json.dumps(res_formatted), mimetype='application/json')  
 
+#get the dropdown menu for credit cards
 def get_cards():
     userN = user.getUserName()
     sql="SELECT * FROM PaymentInfo WHERE Username = %s"
@@ -203,10 +207,8 @@ def get_cards():
         res_formatted.append({"value": value, "label": label})
     return Response(json.dumps(res_formatted), mimetype='application/json')  
 
-def get_deps(dep, arr, date):
-    print temp_resv
-    print c
-    
+#get departures that match the search
+def get_deps(dep, arr, date):    
     sql = "SELECT DISTINCT S1.TrainNumber AS TrainNumber, CONCAT(S1.DepartureTime) AS Departure, CONCAT(S2.ArrivalTime) AS Arrival, CONCAT(TIMEDIFF(Time(S2.ArrivalTime), Time(S1.DepartureTime))) AS Duration, CONCAT(S3.1stClassPrice) AS firstClassPrice, CONCAT(S3.2ndClassPrice) AS secondClassPrice FROM  `Stop` S1, `Stop` S2, Stop NATURAL JOIN TrainRoute S3 WHERE S1.TrainNumber = S2.TrainNumber AND S2.TrainNumber= S3.TrainNumber AND S1.TrainNumber= S3.TrainNumber AND S1.NAME = %s AND S2.NAME =  %s AND S2.ArrivalTime IS NOT NULL AND S1.DepartureTime IS NOT NULL" 
 
     cursor = db.cursor(pymysql.cursors.DictCursor)
@@ -231,20 +233,23 @@ def get_deps(dep, arr, date):
             
         deps.setDeps(tempDep)
         return jsonify(success="true")
-    
+
+#store info about the selected departure    
 def resv_select():
+    global temp
     data = request.get_json()
     trainNo = data['trainNo']
     priceClass = data['priceClass']
+    depTime = data['depTime']
     temp_resv[c]['TrainNumber'] = trainNo
     temp_resv[c]['Class'] = priceClass
+    temp_resv[c]['DepartureDate'] = temp_resv[c]['DepartureDate']+" "+depTime
     return jsonify(success="true")
 
 def resv_extras():
     data = request.get_json()
     passenger = data['passenger']
     baggage = data['baggage']
-    print baggage
     
     trainNo = temp_resv[c]['TrainNumber']
     priceClass =  temp_resv[c]['Class']
@@ -274,25 +279,39 @@ def resv_extras():
         temp_resv[c]['Student'] = 1   
 
     temp_resv[c]['PassengeName'] = passenger
-    temp_resv[c]['NumberOfBaggages'] = baggage
-    print  temp_resv[c]['NumberOfBaggages']
-    temp_resv[c]['TotalCost'] = cost
+    temp_resv[c]['NumberOfBaggage'] = baggage
+    temp_resv[c]['TotalCost'] = ticketPrice
+    temp_resv[c]['CombinedCost'] = cost
     return jsonify(success="true")    
 
+#finalize reservation
 def reserve():
     data = request.get_json()
     cardNo = data['cardNo']
     userN = user.getUserName()
     isCancelled = 0
     isUpdated = 0
-    resvID = str(idGenerator())
-    temp_id.append(resvID)
-    time = datetime.now().time().strftime('%Y-%m-%d %H:%M:%S')
     
+    #generate a random reservation ID
+    resvID = str(idGenerator())
+    global temp_id
+    temp_id = []
+    temp_id.append(resvID)
+    
+    #get current time
+    time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    
+    #get the stored departure info
+    global temp_resv
     trainNo = temp_resv[c]['TrainNumber']
-    date = temp_resv[c]['DepartureDate'].strptime('%Y-%m-%d %H:%M:%S')
+    
+    #parse the date to be sql-friendly
+    date = temp_resv[c]['DepartureDate']
+    parseDate = datetime.strptime(date, '%a, %d %b %Y %X')
+    date_formatted = parseDate.strftime('%Y-%m-%d %H:%M:%S')
+    
     passenger = temp_resv[c]['PassengeName']
-    baggage = temp_resv[c]['NumberOfBaggages']
+    baggage = temp_resv[c]['NumberOfBaggage']
     dep = temp_resv[c]['DepartsFrom']
     arr = temp_resv[c]['ArrivesAt']
     cost = temp_resv[c]['TotalCost']
@@ -307,10 +326,14 @@ def reserve():
     cursor.execute(sql,(resvID, time, cardNo, userN))
     
     sql = "INSERT INTO Reserves Values(%s, %s, %s, %s, %s, %s, %s, %s, %s)"
-    cursor.execute(sql,(trainNo, resvID, priceClass, date, passenger, baggage, dep, arr, cost))
+    cursor.execute(sql,(trainNo, resvID, priceClass, date_formatted, passenger, baggage, dep, arr, cost))
+    
+    #clear the stored info
+    temp_resv = [{}]
                    
     return jsonify(msg="success")
 
+#remove a journey from selection 
 def remove_resv():
     global c
     data = request.get_json()
@@ -319,17 +342,19 @@ def remove_resv():
     for resv in temp_resv:
         if resv['TrainNumber'] == trainNo and resv['DepartureDate'] == dep:
             temp_resv.remove(resv)
-            if (c != 0):
-                c -= 1
+            c = len(temp_resv) - 1
     return jsonify(msg="success")
 
+#add more journeys
 def add_more():
     global c
-    if (c == 1):
-        return jsonify(err="At most two trains a reservation.")
+    if (c == 2):
+        return jsonify(err="At most three trains a reservation.")
     temp_resv.append({})
     c += 1
     return jsonify(msg="success")
+
+#add and remove payment info
 
 def add_card():
     data = request.get_json()
@@ -368,6 +393,7 @@ def delete_card():
     return jsonify(msg="success")
     
 #update reservation
+
 def get_resvs(resvID):
     sql = "SELECT * FROM Reserves WHERE ReservationID = %s"
     cursor = db.cursor(pymysql.cursors.DictCursor)
@@ -380,7 +406,8 @@ def get_resvs(resvID):
         for resv in res:
             resv['TotalCost'] = str(resv['TotalCost'])
         return Response(json.dumps(res), mimetype='application/json')
-    
+
+#input the reservation to be updated
 def update():
     data = request.get_json()
     resvID = data['resvID']
@@ -395,6 +422,7 @@ def update():
     updateInfo[0]['resvID'] = resvID
     return jsonify(success="true")
 
+#select one departure
 def update_select():
     data = request.get_json()
     trainNo = data['trainNo']
@@ -403,12 +431,14 @@ def update_select():
     cursor = db.cursor(pymysql.cursors.DictCursor)
     cursor.execute(sql,(resvID, trainNo))
     res = cursor.fetchall()
+    #no update permitted within 24 hrs
     if int(res[0]['updateDiff']) < 24:
         return  jsonify(msg="Sorry, updates are not permitted within one day of the departure.")
     
     updateInfo[0]['trainNo'] = trainNo
     return jsonify(success="true")
 
+#get the departure to be updated
 def get_update_selected():
     resvID = updateInfo[0]['resvID']
     trainNo = updateInfo[0]['trainNo']
@@ -421,18 +451,7 @@ def get_update_selected():
         resv['TotalCost'] = float(resv['TotalCost'])
     return Response(json.dumps(res), mimetype='application/json')   
 
-def totalCostCalculator(resvID):
-    sql = "SELECT ReservationID, CASE WHEN IsStudent = 1 THEN (Baggages_price + total_spend) * 0.8 ELSE (Baggages_price + total_spend) END AS TheFinalPrice FROM FinalCost NATURAL JOIN Reservation NATURAL JOIN Customer WHERE ReservationID = %s AND IsCancelled = 0"
-    cursor = db.cursor(pymysql.cursors.DictCursor)
-    cursor.execute(sql, (resvID))
-    res = cursor.fetchall()
-    totalCost = 0    
-    for i in res:
-        totalCost = totalCost + float(i['TheFinalPrice'])
-
-    #Below will return total cost of that reservation ID
-    return (res[0]['TheFinalPrice'])
-
+#finalize update
 def update_submit():
     data = request.get_json()
     newDate = data['newDate']
@@ -484,6 +503,7 @@ def cancel():
         cost = 0
         refund=0
         
+        #calculate refund according to the rules
         sql = "Select TotalCost from Reserves WHERE ReservationID = %s"
         cursor.execute(sql, (resvID))
         res = cursor.fetchall()
@@ -499,7 +519,8 @@ def cancel():
 
         cancelInfo.append({"resvID": resvID,"cost": cost ,"refund": refund, "date": time.strftime("%d/%m/%y")})
         return jsonify(success="true")
-    
+
+#finalize cancel
 def cancel_submit():
     data = request.get_json()
     resvID = data['resvID']
@@ -508,6 +529,7 @@ def cancel_submit():
     cursor.execute(sql, (resvID))
     return jsonify(msg="Cancellation successful!")
 
+#to generate random review and reservation IDs
 def idGenerator():
     id = int(random.random()*100000000)
     return id

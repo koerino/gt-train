@@ -12,13 +12,13 @@ class QuantityInput extends Component {
     increment() {
         if (this.state.quantity < 4) {
             this.setState({quantity: this.state.quantity + 1});
-            this.props.funct(this.props.field, this.state.quantity+1)
+            this.props.funct(this.props.field, this.state.quantity+1);
         }
     }
     decrement() {
         if (this.state.quantity > 0) {
             this.setState({quantity: this.state.quantity - 1});
-            this.props.funct(this.props.field, this.state.quantity-1)
+            this.props.funct(this.props.field, this.state.quantity-1);
         }
     }
     render() {

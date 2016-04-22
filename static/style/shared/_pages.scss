@@ -5,7 +5,7 @@
     .content {
         margin-top: 2em;
     }
-    .buttons{
+    .buttons {
         margin-top: 1em;
     }
 }
@@ -140,7 +140,7 @@
         display: inline-block;
     }
     .ratings {
-        width: 12em; 
+        width: 12em;
     }
     .comments {
         width: 20em;
@@ -198,7 +198,6 @@
     }
 }
 #resvs-table {
-    background-color: aquamarine;
     @include font(12px);
     text-align: center;
     div {
@@ -223,7 +222,8 @@
         @include center;
     }
 }
-#select-resv, #update-resv {
+#select-resv,
+#update-resv {
     @include font(12px);
     text-align: center;
     .content > div {
@@ -248,35 +248,42 @@
 #make-resv {
     @include font(16px);
     > div {
-        margin-top: 2em;
-        .link, a {
+        margin-top: 1.25em;
+        .link,
+        a {
             @include link($soft-cyan);
             text-decoration: none;
         }
         > span {
-            margin-left: 3em;
+            margin-left: 2.5em;
         }
     }
     .dropdown {
-        margin-left: 1.5em;
+        margin-left: 1em;
         > div {
             width: 80%;
         }
     }
     .buttons {
         @include center;
-        margin-top: 1.5em;
+        margin-top: 1em;
     }
     .msg {
         margin-left: 16em;
     }
+    .sm {
+        display: inline-block;
+        font-size: 13px;
+        margin: 1em 0 0 3em;
+    }
 }
-#popular-routes, #revenue {
+#popular-routes,
+#revenue {
     @include font;
     .content {
         margin: 3em 0;
         div {
-            margin-bottom: 2em;    
+            margin-bottom: 2em;
         }
         span {
             margin: 1em;

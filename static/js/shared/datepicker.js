@@ -23,7 +23,7 @@ class Date extends Component {
     render() {
         var classes = classNames({
             'datepicker': true,
-            'small': this.props.small,
+            'small': this.props.small
         });
         return (
             <div className={classes}>

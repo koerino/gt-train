@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 import ButtonLink from '../../shared/button-link';
+import 'whatwg-fetch';
 
 class ViewRevenue extends Component {
     constructor(props) {
@@ -22,7 +23,6 @@ class ViewRevenue extends Component {
     }
     render() {
         var report = this.state.report;
-        console.log(report);
         var rows = [];
         if (report) report.map(function(row) {
             rows.push(

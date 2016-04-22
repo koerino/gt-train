@@ -1,6 +1,7 @@
 import React, { Component }from 'react';
 import { Link } from 'react-router';
 import ButtonLink from '../../shared/button-link';
+import 'whatwg-fetch';
 
 class ViewPopularRoute extends Component {
     constructor(props) {

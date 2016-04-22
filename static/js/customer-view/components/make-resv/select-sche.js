@@ -20,7 +20,6 @@ class SelectDep extends Component {
         }).then(res => res.json())
             .then(data => {
                 this.setState({data: data});
-                console.log(data);
             })
             .catch(err => console.log(err));
     }
@@ -37,8 +36,10 @@ class SelectDep extends Component {
     sendSelectReq() {
         var val = document.querySelector('input[name="dep"]:checked').value;
         var i = val.indexOf(",");
+        var j = val.lastIndexOf(",");
         var trainNo = val.substring(0, i);
-        var priceClass = val.substring(i+1);
+        var priceClass = val.substring(i+1, j);
+        var depTime = val.substring(j+1, j+9);
         fetch('/api/reserve/select', {
             method: 'POST',
             headers: {
@@ -46,7 +47,8 @@ class SelectDep extends Component {
             },
             body: JSON.stringify({
                 trainNo: trainNo,
-                priceClass: priceClass
+                priceClass: priceClass,
+                depTime: depTime
             })
         }).catch(err => console.log(err));
     }

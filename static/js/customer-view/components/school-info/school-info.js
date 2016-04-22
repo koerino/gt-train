@@ -30,7 +30,6 @@ class SchoolInfo extends Component {
             .then(data => this.setState({msg: data.msg}))
             .catch(err => console.log(err));
     }
-    
     render() {
         return (
             <div className='page-container' id='school-info'>

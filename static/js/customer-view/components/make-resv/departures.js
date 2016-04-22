@@ -24,8 +24,8 @@ class Departures extends Component {
                 <div key={entry.TrainNumber+entry.Duration}>
                     <span className='dep-col'>{entry.TrainNumber}</span>
                     <span className='dep-col-lg'>{entry.Duration}</span>
-                    <span className='dep-col'><input name='dep' type='radio'  value={entry.TrainNumber+",First"} onChange={this.props.select} /><span>{entry.firstClassPrice}</span></span>
-                    <span className='dep-col'><input name='dep' type='radio' value={entry.TrainNumber+",Second"} onChange={this.props.select} /><span>{entry.secondClassPrice}</span></span>
+                    <span className='dep-col'><input name='dep' type='radio'  value={entry.TrainNumber+",First"+","+entry.Duration} onChange={this.props.select} /><span>{entry.firstClassPrice}</span></span>
+                    <span className='dep-col'><input name='dep' type='radio' value={entry.TrainNumber+",Second"+","+entry.Duration} onChange={this.props.select} /><span>{entry.secondClassPrice}</span></span>
                 </div>
             );
         }.bind(this)); 

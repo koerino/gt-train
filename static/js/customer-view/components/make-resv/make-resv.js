@@ -38,13 +38,17 @@ class MakeResv extends Component {
         }).then(res => res.json())
             .then(data => {
                 if (data[0]['Student'] === 1) this.setState({discount: "Student Discount Applied"});
-                this.setState({cost: this.state.cost + data[0]['TotalCost']});
+                var cost = 0;
+                for (var i = 0; i < data.length; i++) {
+                    cost += data[i]['CombinedCost'];
+                    this.setState({cost: cost});
+                }
                 this.setState({resvs: data});
             })
             .catch(err => console.log(err));
     }
     sendSubmitReq() {
-        if (!this.state.card) this.setState({msg: "Please select a card for payment."})
+        if (!this.state.card) this.setState({msg: "Please select a card for payment."});
         else {
             fetch('/api/reserve', {
                 method: 'POST',
@@ -106,9 +110,7 @@ class MakeResv extends Component {
                         <span className='link' onClick={this.addMoreTrains}>Add Another Train</span>
                         <span className='link'><Link to='reserve-payment'>Add Card</Link></span>
                     </div>
-                    <div>
-                        <span>{ this.state.discount }</span>
-                    </div>
+                    <span className='sm'>{ this.state.discount }</span>
                     <div className='dropdown'>
                         <Dropdown label='Use Card' short='true' field='card' options={this.state.cards} value={this.state.card} funct={this.handleChange} />
                     </div>
