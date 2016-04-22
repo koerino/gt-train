@@ -7,6 +7,6 @@ import ViewSche from './view-sche';
 export default (
     <Route>
         <Route path="search-schedules" component={SearchSche} />
-        <Route path="schedules" component={ViewSche} /> {/* to-be-dynamic */}
+        <Route path="schedules" component={ViewSche} />
     </Route>
 );
