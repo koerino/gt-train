@@ -1,74 +1,93 @@
 # GT Train.com
 
-The actual database is hosted on academic-mysql.cc.gatech.edu.
-Can be accessed using GT VPN and username/password (stored in hidden file config.py).
+The actual database is hosted on academic-mysql.cc.gatech.edu
+
+Can be accessed using GT VPN and username/password (stored in hidden file config.py)
 
 App logic specification is located in docs/
 
 #Demo Screenshots
 
+
 **Authentication**
 
-![Alt text](http://postimg.org/image/jqk2ycrw9/)
 
-![Alt text](http://postimg.org/image/6ax28wjeh/)
+![Screenshot](http://s20.postimg.org/70ful9jy5/registration.png)
+
+![Screenshot](http://s20.postimg.org/erwkjto3h/login.png)
+
 
 **Customer Menu**
 
-![Alt text](http://postimg.org/image/d2nhbr8e1/)
+
+![Screenshot](http://s20.postimg.org/ycb3mloot/menu.png)
+
 
 **View Train Schedules**
 
-![Alt text](http://postimg.org/image/yqcfm78s9/)
 
-![Alt text](http://postimg.org/image/cskk65j5l/)
+![Screenshot](http://s20.postimg.org/9kbhfd7i5/sche.png)
+
+![Screenshot](http://s20.postimg.org/4ztwe6d6l/sche2.png)
+
 
 **Make Reservation**
 
-![Alt text](http://postimg.org/image/msfgm1uex/)
 
-![Alt text](http://postimg.org/image/d95rsl6wp/)
+![Screenshot](http://s20.postimg.org/6iyxu0fgd/reserve1.png)
 
-![Alt text](http://postimg.org/image/capeqatkp/)
+![Screenshot](http://s20.postimg.org/x5beizjnh/reserve2.png)
 
-![Alt text](http://postimg.org/image/5iyzng4l5/)
+![Screenshot](http://s20.postimg.org/5w014hikd/reserve3.png)
 
-![Alt text](http://postimg.org/image/6nt1str21/)
+![Screenshot](http://s20.postimg.org/95egay6nx/reserve4.png)
 
-![Alt text](http://postimg.org/image/jt8jyxkxl/)
+![Screenshot](http://s20.postimg.org/kt8i5hvst/reserve5.png)
+
+![Screenshot](http://s20.postimg.org/ew982f41p/reserve6.png)
+
 
 **Change Reservation**
 
-![Alt text](http://postimg.org/image/p5xed28u1/)
 
-![Alt text](http://postimg.org/image/b26l1s7y1/)
+![Screenshot](http://s20.postimg.org/bj0zfpagt/update1.png)
 
-![Alt text](http://postimg.org/image/f7hhnp5q1/)
+![Screenshot](http://s20.postimg.org/4iczmx8ot/update2.png)
+
+![Screenshot](http://s20.postimg.org/xw8q2ibel/update3.png)
+
 
 **Cancel Reservation**
 
-![Alt text](http://postimg.org/image/wbp5fihx5/)
 
-![Alt text](http://postimg.org/image/ew01axpa1/)
+![Screenshot](http://s20.postimg.org/n3wwytav1/cancel1.png)
+
+![Screenshot](http://s20.postimg.org/4pw15ou9p/cancel2.png)
+
 
 **Review**
 
-![Alt text](http://postimg.org/image/k8ovp2d6h/)
 
-![Alt text](http://postimg.org/image/5ugg07l15/)
+![Screenshot](http://s20.postimg.org/bdx86135p/review1.png)
 
-![Alt text](http://postimg.org/image/cv9hq3t4p/)
+![Screenshot](http://s20.postimg.org/llb64ozzx/review2.png)
+
+![Screenshot](http://s20.postimg.org/hsw92p9vh/review3.png)
+
 
 **Add Student Discount**
 
-![Alt text](http://postimg.org/image/jmzwsyi49/)
 
-![Alt text](http://postimg.org/image/t8th999a1/)
+![Screenshot](http://s20.postimg.org/g2d817scd/school1.png)
+
+![Screenshot](http://s20.postimg.org/olwlyz0ot/school2.png)
+
 
 **Admin Menu/Views**
 
-![Alt text](http://postimg.org/image/h8818j1vd/)
 
-![Alt text](http://postimg.org/image/m85hgh7i1/)
+![Screenshot](http://s20.postimg.org/spszdq799/admin1.png)
 
-![Alt text](http://postimg.org/image/m9ff9w9bt/)
+![Screenshot](http://s20.postimg.org/j6jak9jr1/admin2.png)
+
+![Screenshot](http://s20.postimg.org/j7t8dolkt/admin3.png)
